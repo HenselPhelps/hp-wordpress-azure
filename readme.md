@@ -8,7 +8,7 @@ Prerequisites:
 
 Get started:
 ------------
-1. Fork this repo to the name of your app (els18, supplier-diversity, arb-sccp, etc)
+1. Fork this repo to the name of your app (`els18`, `supplier-diversity`, `arb-sccp`, etc)
 2. Clone the forked repo to your local machine
 3. Set up azure remote: `git remote add azure https://<username>@<appname>.scm.azurewebsites.net/<appname>.git`
     - `<username>` is your _account level deployment user_. You can access the user info using [`az webapp deployment user`](https://docs.microsoft.com/en-us/cli/azure/webapp/deployment/user?view=azure-cli-latest).
@@ -18,5 +18,5 @@ Get started:
 6. Backup changes to VSTS: `git push origin`
 7. Deploy to Azure: `git push azure`
     - Note that the first push will be slow, subsequent pushes will be faster
-    - If this is your first push to Azure, go to https://<appname>.azurewebsites.net/wp-admin to complete the WordPress install
+    - If this is your first push to Azure, go to `https://<appname>.azurewebsites.net/wp-admin` to complete the WordPress install
 8. Repeat steps 4-7 for the typical development cycle
