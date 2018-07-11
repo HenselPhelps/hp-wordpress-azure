@@ -1,6 +1,10 @@
 # hp-default-wordpress
 Welcome to the default WordPress install for Hensel Phelps! Get started with a new site using the following steps:
 
+Prerequisites:
+--------------
+- Decide on a name for your app, and get the corresponding app service deployed into Azure
+
 1. Fork this repo to the name of your app (els18, supplier-diversity, arb-sccp, etc)
 2. Clone the forked repo to your local machine
 3. Set up azure remote: `git remote add azure https://<username>@<appname>.scm.azurewebsites.net/<appname>.git`
