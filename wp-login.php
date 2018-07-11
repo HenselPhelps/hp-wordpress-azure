@@ -425,7 +425,7 @@ if ( defined( 'RELOCATE' ) && RELOCATE ) { // Move flag is set
 	if ( isset( $_SERVER['PATH_INFO'] ) && ($_SERVER['PATH_INFO'] != $_SERVER['PHP_SELF']) )
 		$_SERVER['PHP_SELF'] = str_replace( $_SERVER['PATH_INFO'], '', $_SERVER['PHP_SELF'] );
 
-	$url = dirname( set_url_scheme( 'http://' .  $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] ) );
+	$url = dirname( set_url_scheme( 'https://' .  $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] ) );
 	if ( $url != get_option( 'siteurl' ) )
 		update_option( 'siteurl', $url );
 }
@@ -856,13 +856,13 @@ case 'confirmaction' :
 	if ( is_wp_error( $result ) ) {
 		wp_die( $result );
 	}
-	
+
 	/**
 	 * Fires an action hook when the account action has been confirmed by the user.
-	 * 
+	 *
 	 * Using this you can assume the user has agreed to perform the action by
 	 * clicking on the link in the confirmation email.
-	 * 
+	 *
 	 * After firing this action hook the page will redirect to wp-login a callback
 	 * redirects or exits first.
 	 *
