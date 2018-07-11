@@ -1,4 +1,5 @@
-# hp-default-wordpress
+hp-default-wordpress
+====================
 Welcome to the default WordPress install for Hensel Phelps!
 
 Prerequisites:
