@@ -1,0 +1,55 @@
+@mixin woo-pagination {
+
+  nav.woocommerce-pagination {
+   
+    ul.page-numbers {
+      border: none;
+      li {
+        
+        overflow:visible;
+
+        border: none;
+
+        > *:not(.next):not(.prev) {
+          width: 2em;
+          height: 2em;
+          line-height: 100%;
+          font-size: $typo_font_size;
+          border-radius: 100%;
+          margin-left:5px;
+          margin-right:5px;
+        }
+
+        a:not(.next):not(.prev) {
+          text-decoration: none;
+          border-style: none;
+          border-width: 0px;
+          border-color: transparent;
+          color: $woo_primary_color;
+        }
+
+        a.next,
+        a.prev{
+          @include ope-button;
+          color: #ffffff;
+          background-color: $woo_primary_color;
+          margin-left:5px;
+          margin-right:5px;
+        }
+
+        span {
+          text-align: center;
+          font-size: $typo_font_size;
+          display: inline-block;
+          color: #FFFFFF;
+          background-color: $woo_primary_color;
+
+          box-shadow: $default_shadow;
+        }
+
+      }
+    }
+
+  }
+
+}

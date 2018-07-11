@@ -36,6 +36,7 @@ foreach ($_SERVER as $key => $value) {
     $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
 }
 
+/* Connect to db using SSL */
 define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 define('MYSQL_SSL_CA', getenv('MYSQL_SSL_CA'));
 

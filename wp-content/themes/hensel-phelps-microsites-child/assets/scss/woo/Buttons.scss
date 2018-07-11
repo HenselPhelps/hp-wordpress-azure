@@ -1,0 +1,112 @@
+@mixin woo-price-buttons {
+  .price {
+    font-size: 2em;
+    font-weight: 400;
+    color: $woo_primary_color;
+
+    del, ins {
+      display: inline-block;
+      font-weight: 400;
+      //font-size: percent_fontsize(90);
+    }
+
+    del {
+      font-size: 0.6em;
+      color: lighten($woo_primary_color, 10);
+    }
+
+    ins {
+      text-decoration: none;
+    }
+
+    @media #{$media_mobile_only}{
+      margin-bottom: 1.4em;
+    }
+  }
+}
+
+
+@mixin woo-buttons {
+
+  // buttons
+  input[type=submit], 
+  input[type=button], 
+  button
+  .button,
+  a.button,
+  button.button,
+  input.button,
+  #respond input#submit {
+    @include ope-custom-button($woo_primary_color, #ffffff);
+    margin-bottom:0;
+    &.loading {
+      &:after {
+        top: 1em;
+      }
+    }
+
+  }
+
+  .button.alt,
+  a.button.alt,
+  button.button.alt,
+  input.button.alt,
+  a.added_to_cart,
+  #respond input#submit.alt {
+    @include ope-custom-button($woo_secondary_color, #ffffff);
+
+  }
+
+  a.added_to_cart {
+    &.wc-forward {
+      position: absolute;
+      clear: both;
+      top: 100%;
+      transform: translate(-50%, -50%);
+      left: 50%;
+
+      &:before {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        content: "\f07a";
+        margin-right: 0.5em;
+      }
+    }
+  }
+
+  .star-rating {
+    font-size: $typo_font_size !important;
+
+    &:before {
+      color: darken($woo_rating_stars_color, 20);
+    }
+
+    span:before {
+      color: $woo_rating_stars_color;
+    }
+  }
+
+  p.stars {
+    a {
+      color: $woo_primary_color;
+    }
+  }
+
+  span.onsale {
+    background-color: $woo_onsale_color;
+    border-radius: 4px;
+
+    @media #{$media_mobile_only}{
+      margin: 1em 0.5em 0 0 !important;
+    }
+  }
+
+  @include woo-price-buttons;
+
+}
+
+

@@ -1,0 +1,322 @@
+// Flexbox display
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  &:before, &:after {
+    display:none;
+  }
+
+}
+
+// The 'flex' shorthand
+// - applies to: flex items
+// <positive-number>, initial, auto, or none
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+     -moz-box-flex: $values;
+      -webkit-flex: $values;
+  	  -ms-flex: $values;
+  	      flex: $values;
+}
+
+// Flex Flow Direction
+// - applies to: flex containers
+// row | row-reverse | column | column-reverse
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+     -moz-flex-direction: $direction;
+      -ms-flex-direction: $direction;
+          flex-direction: $direction;
+}
+
+// Flex Line Wrapping
+// - applies to: flex containers
+// nowrap | wrap | wrap-reverse
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+     -moz-flex-wrap: $wrap;
+      -ms-flex-wrap: $wrap;
+          flex-wrap: $wrap;
+}
+
+// Flex Direction and Wrap
+// - applies to: flex containers
+// <flex-direction> || <flex-wrap>
+@mixin flex-flow($flow) {
+  -webkit-flex-flow: $flow;
+     -moz-flex-flow: $flow;
+      -ms-flex-flow: $flow;
+          flex-flow: $flow;
+}
+
+// Display Order
+// - applies to: flex items
+// <integer>
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;  
+     -moz-box-ordinal-group: $val;     
+  	     -ms-flex-order: $val;     
+  	      -webkit-order: $val;  
+  		      order: $val;
+}
+
+// Flex grow factor
+// - applies to: flex items
+// <number>
+@mixin flex-grow($grow) {
+  -webkit-flex-grow: $grow;
+     -moz-flex-grow: $grow;
+      -ms-flex-grow: $grow;
+          flex-grow: $grow;
+}
+
+// Flex shrink
+// - applies to: flex item shrink factor
+// <number> 
+@mixin flex-shrink($shrink) {
+  -webkit-flex-shrink: $shrink;
+     -moz-flex-shrink: $shrink;
+      -ms-flex-shrink: $shrink;
+          flex-shrink: $shrink;
+}
+
+// Flex basis
+// - the initial main size of the flex item
+// - applies to: flex itemsnitial main size of the flex item
+// <width> 
+@mixin flex-basis($width) {
+  -webkit-flex-basis: $width;
+     -moz-flex-basis: $width;
+      -ms-flex-basis: $width;
+          flex-basis: $width;
+}
+
+// Axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | space-between | space-around 
+@mixin justify-content($justify) {
+  -webkit-justify-content: $justify;
+     -moz-justify-content: $justify;
+      -ms-justify-content: $justify;
+          justify-content: $justify;
+            -ms-flex-pack: $justify;
+}
+
+// Packing Flex Lines
+// - applies to: multi-line flex containers
+// flex-start | flex-end | center | space-between | space-around | stretch 
+@mixin align-content($align) {
+  -webkit-align-content: $align;
+     -moz-align-content: $align;
+      -ms-align-content: $align;
+          align-content: $align;
+}
+
+// Cross-axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | baseline | stretch 
+@mixin align-items($align) {
+  -webkit-align-items: $align;
+     -moz-align-items: $align;
+      -ms-align-items: $align;
+          align-items: $align;
+}
+
+// Cross-axis Alignment
+// - applies to: flex items
+// auto | flex-start | flex-end | center | baseline | stretch 
+@mixin align-self($align) {
+  -webkit-align-self: $align;
+     -moz-align-self: $align;
+      -ms-align-self: $align;
+          align-self: $align;
+}
+
+
+
+
+// ===================================================================
+// Flexbox Grid Mixins
+// Version 0.1.3
+// Description: Sass Mixins to generate Flexbox grid
+// Author: thingsym
+// GitHub: https://github.com/thingsym/flexbox-grid-mixins
+// MIT License
+// ===================================================================
+
+@charset 'utf-8';
+
+@mixin grid($display: flex, $flex-direction: null, $flex-wrap: null, $flex-flow: null, $justify-content: null, $align-items: null, $align-content: null, $gutter: null, $grid-type: skeleton)
+{
+  box-sizing: border-box;
+
+  @if $display {
+    display: $display;
+  }
+
+  @if $flex-direction {
+    flex-direction: $flex-direction;
+  }
+  @if $flex-wrap {
+    flex-wrap: $flex-wrap;
+  }
+
+  @if $flex-flow {
+    flex-flow: $flex-flow;
+  }
+
+  @if $justify-content {
+    justify-content: $justify-content;
+  }
+  @if $align-items {
+    align-items: $align-items;
+  }
+  @if $align-content {
+    align-content: $align-content;
+  }
+
+  @if $grid-type == skeleton {
+    @if $gutter {
+      @include grid-margin($margin: 0 $gutter / 2 * -1);
+    }
+  }
+
+  @content;
+}
+
+
+@mixin grid-col($col: null, $grid-columns: 12, $col-offset: null, $gutter: null, $condensed: false, $align-self: null, $flex-grow: 0, $flex-shrink: 1, $flex-basis: auto, $order: null, $grid-type: skeleton, $last-child: false)
+{
+  box-sizing: border-box;
+
+  @if type-of($col) == number and unitless($col) == true {
+    $flex-grow: 0;
+    $flex-shrink: 0;
+    $flex-basis: percentage($col / $grid-columns);
+
+    @if $grid-type == skeleton {
+      @if $gutter and unit($gutter) == '%' {
+        $flex-basis: $flex-basis - $gutter;
+      } @else if $gutter and unitless($gutter) == false {
+        $flex-basis: calc( #{$flex-basis} - #{$gutter});
+      }
+
+    } @else if $grid-type == margin-offset {
+      @if $gutter and unit($gutter) == '%' {
+        $flex-basis: (100% - ($gutter * ($grid-columns / $col - 1))) / ($grid-columns / $col);
+      } @else if $gutter and unitless($gutter) == false {
+        $flex-basis: calc( #{$flex-basis} - #{$gutter * ($grid-columns / $col - 1) / ($grid-columns / $col)});
+      }
+    }
+
+    @if $col-offset and unit($col-offset) == '%' {
+      $flex-basis: $flex-basis + $col-offset;
+    } @else if $col-offset and unitless($col-offset) == false {
+      $flex-basis: calc( #{$flex-basis} + #{$col-offset});
+    }
+  } @else if type-of($col) == number and unitless($col) == false {
+    $flex-grow: 0;
+    $flex-shrink: 0;
+    $flex-basis: $col;
+  } @else if type-of($col) == string and $col == 'auto' {
+    $flex-grow: 1;
+    $flex-shrink: 1;
+    $flex-basis: auto;
+    max-width: 100%;
+    width: auto;
+  // flex: 1;
+  } @else if type-of($col) == string and $col == 'equal' {
+    $flex-grow: 1;
+    $flex-shrink: 1;
+    $flex-basis: 0;
+  // flex: none;
+  } @else if type-of($col) == string and $col == 'none' {
+    $flex-grow: 0;
+    $flex-shrink: 0;
+    $flex-basis: auto;
+  // flex: initial;
+  } @else if type-of($col) == string and $col == 'initial' {
+    $flex-grow: 0;
+    $flex-shrink: 1;
+    $flex-basis: auto;
+  } @else if type-of($col) == string and $col == 'breakpoint' {
+    $flex-grow: 0;
+    $flex-shrink: 1;
+    $flex-basis: auto;
+    width: 100%;
+  }
+
+  flex: $flex-grow $flex-shrink $flex-basis;
+
+  @if $align-self {
+    align-self: $align-self;
+  }
+
+  @if type-of($order) == number {
+    order: $order;
+  }
+
+  @if $gutter and unitless($gutter) == false {
+    @if $grid-type == skeleton {
+      @if $condensed == true {
+        @include grid-col-margin($margin: 0 $gutter / 2);
+      } @else {
+        @include grid-col-margin($margin: 0 $gutter / 2 $gutter);
+      }
+    } @else if $grid-type == margin-offset {
+      @if type-of($col) == string and $col == 'breakpoint' {
+        @include grid-col-margin($margin-right: 0);
+      } @else if $last-child {
+        @include grid-col-margin($margin-right: 0);
+      } @else {
+        @include grid-col-margin($margin-right: $gutter);
+      }
+
+      @if $condensed == false {
+        @include grid-col-margin($margin-bottom: $gutter);
+      }
+    }
+  }
+
+  @content;
+}
+
+@mixin grid-margin($margin: null, $margin-top: null, $margin-right: null, $margin-bottom: null, $margin-left: null)
+{
+  @if $margin != null {
+    margin: $margin;
+  }
+  @if $margin-top != null {
+    margin-top: $margin-top;
+  }
+  @if $margin-bottom != null {
+    margin-bottom: $margin-bottom;
+  }
+  @if $margin-left != null {
+    margin-left: $margin-left;
+  }
+  @if $margin-right != null {
+    margin-right: $margin-right;
+  }
+}
+
+@mixin grid-col-margin($margin: null, $margin-top: null, $margin-right: null, $margin-bottom: null, $margin-left: null)
+{
+  @include grid-margin($margin, $margin-top, $margin-right, $margin-bottom, $margin-left);
+}
+
+
+@mixin grid-cols($colsno: 1)
+{
+  @if $colsno != 0 {
+    @include grid-col($col: 12 / $colsno){
+      max-width:100%/$colsno;
+      margin-left:0;
+      margin-right:0;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+$woo_primary_color: $color1 !default;
+$woo_secondary_color: $color2 !default;
+
+$woo_onsale_color: lighten($woo_primary_color, 10) !default;
+$woo_rating_stars_color: lighten($woo_primary_color, 10) !default;
+
+$woo_list_item_desktop_cols: 3 !default;
+$woo_list_item_tablet_cols: 2 !default;
+
+$woo_upsells_list_item_desktop_cols: 4 !default;
+$woo_upsells_list_item_tablet_cols: 2 !default;
+
+
+$woo_cross_sell_list_item_desktop_cols: 2 !default;
+$woo_cross_sell_list_item_tablet_cols: 2 !default;
+
+
+$woo_related_list_item_desktop_cols: 4 !default;
+$woo_related_list_item_tablet_cols: 2 !default;

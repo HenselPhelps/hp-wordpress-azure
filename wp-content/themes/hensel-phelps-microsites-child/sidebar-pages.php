@@ -1,0 +1,1 @@
+<?phpif(!is_active_sidebar('ope_pages_sidebar')){    return;}?><div class="sidebar left">    <?php dynamic_sidebar('ope_pages_sidebar'); ?></div>

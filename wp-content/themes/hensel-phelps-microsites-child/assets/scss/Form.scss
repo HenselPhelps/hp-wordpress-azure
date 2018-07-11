@@ -1,0 +1,54 @@
+//@import "sassy-inputs/main";
+
+$sassy-base-color: #d3ced2 !default;
+$sassy-accent-color: lighten($color1, 0.1) !default;
+$sassy-disabled-color: #eee !default;
+$sassy-font-size: percent_fontsize(90) !default;
+
+@import "sassy-inputs/helpers/px-to-rem";
+@import "sassy-inputs/helpers/appearance";
+
+@import "sassy-inputs/inputs/text";
+@import "sassy-inputs/inputs/button";
+@import "sassy-inputs/inputs/radio";
+@import "sassy-inputs/inputs/checkbox";
+@import "sassy-inputs/inputs/select";
+
+
+fieldset {
+  border: none;
+  padding: 0 0 8px 0;
+  margin: 0;
+}
+
+input[type=text],
+input[type=tel],
+input[type=url],
+input[type=email],
+input[type=password],
+input[type=number] {
+  @include sassy-text;
+}
+
+textarea {
+  @include sassy-textarea;
+}
+
+input[type=search] {
+  @include sassy-search;
+}
+
+form {
+  @include sassy-select;
+}
+
+select[multiple] {
+  @include sassy-select-multiple;
+}
+
+
+@function sassy-fontsize() {
+  @return strip-unit($typo_font_size) -1;
+}
+
+

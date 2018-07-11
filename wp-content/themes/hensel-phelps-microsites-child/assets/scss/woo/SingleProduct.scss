@@ -1,0 +1,149 @@
+@mixin woo-single-product {
+
+  div.product {
+
+    .ope-woo-product-images {
+      display: block;
+      margin-left: -15px;
+      margin-right: -15px;
+
+      .woocommerce-product-gallery__image {
+        display: block;
+        width: 25%;
+        float: left;
+        padding: 15px;
+      }
+    }
+
+    .product_meta {
+      display: block;
+      float: none;
+      clear: both;
+    }
+
+    .summary {
+      @include woo-price-buttons;
+    }
+
+    .product_title {
+      text-transform:none;
+    }
+
+
+    .woocommerce-variation-price {
+       margin-bottom:15px;
+    }
+
+
+    form.cart {
+      @media #{$media_mobile_only} {
+        margin-bottom: 2em;
+        text-align: center;
+        display: inline-block;
+      }
+
+      .variations label {
+        text-transform: capitalize; 
+      }
+    }
+
+    span.onsale {
+      left: auto;
+      right: -1em;
+    }
+
+    img.zoomImg {
+      cursor: pointer;
+    }
+
+
+    .woocommerce-tabs ul.tabs li {
+      background-color: transparent;
+      margin:0px;
+      &.active {
+        /*background-color: $color1;*/
+      }
+
+      &:before, &:after {
+        visibility:hidden;
+      }
+    }
+  }
+
+  .product {
+    h2 {
+      font-size: $typo_h3_mobile_font_size;
+    }
+
+  }
+
+  //.woocommerce div.product .woocommerce-tabs ul.tabs li::after, .woocommerce div.product .woocommerce-tabs ul.tabs li::before
+
+  #reviews {
+    #comments {
+      ol.commentlist {
+        li .comment-text {
+          p.meta {
+            font-size: $typo_font_size;
+          }
+        }
+      }
+    }
+
+    #comment {
+      height:130px;
+    }
+
+
+    #review_form #respond  {
+        p {
+          margin: 0;
+        }
+
+    }
+
+    p.stars {
+      font-size:30px;
+      line-height:1;
+    }
+  }
+
+
+
+  .comment-form-rating {
+    @include flexbox();
+    justify-content: space-between;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    border: solid 1px #f1f1f1;
+    padding: 1em;
+    align-items: center;
+  }
+
+  .comment-form label {
+    margin:10px 0;
+  }
+
+}
+
+
+
+
+@mixin woo-single-product-tablet {
+  .product {
+    h2 {
+      font-size: $typo_h3_font_size;
+    }
+
+    span#reply-title {
+      font-size: $typo_h3_font_size;
+    }
+
+
+    #review_form #respond {
+      .form-submit input#submit {
+        float:right;
+      }
+    }
+  }
+}

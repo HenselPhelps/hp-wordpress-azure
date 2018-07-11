@@ -1,0 +1,1 @@
+<?phpif(!is_active_sidebar('ope_pro_woocommerce_sidebar_left')){    return;}?><div class="sidebar left">    <?php dynamic_sidebar('ope_pro_woocommerce_sidebar_left'); ?></div>
